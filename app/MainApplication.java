@@ -1,3 +1,4 @@
+package app;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,9 +12,15 @@ public class MainApplication {
 	private static final String DB_USER = "root";
 	private static final String DB_PASSWORD = "root";
 
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) {
 
-		selectRecordsFromTable();
+		Option option; 
+		System.out.println("Library application");
+		System.out.println("-------------------");
+		
+		for(Option o: Option.values()) {
+			System.out.println(o);
+		}
 
 	}
 
