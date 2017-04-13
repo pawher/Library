@@ -15,6 +15,12 @@ public class DataReader {
 		sc.close();
 	}
 
+	public int getInt() {
+		int number = sc.nextInt();
+		sc.nextLine();
+		return number;
+	}
+
 	public Book createBook() {
 		System.out.println("Title: ");
 		String title = sc.nextLine();
