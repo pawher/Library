@@ -5,5 +5,6 @@ import data.Book;
 
 public interface BookDAO {
 
-	List<Book> showBooks();
+	List<Book> getAllBooks();
+	void insertBook();
 }
