@@ -66,7 +66,7 @@ public class BookDAOImpl implements BookDAO {
 		String query = "INSERT INTO BOOKS" + "(title, author, price) values" + "(?, ?, ?)";
 
 		Book newBook = new DataReader().createBook();
-		
+
 		try {
 			dbConnection = getDBConnection();
 			preparedStatement = dbConnection.prepareStatement(query);
@@ -85,6 +85,31 @@ public class BookDAOImpl implements BookDAO {
 			closeConnection(preparedStatement, dbConnection);
 		}
 
+	}
+
+	@Override
+	public void deleteBook(int id) {
+
+		Connection dbConnection = null;
+		PreparedStatement preparedStatement = null;
+
+		String query = "DELETE FROM BOOKS WHERE id=?";
+
+		try {
+			dbConnection = getDBConnection();
+			preparedStatement = dbConnection.prepareStatement(query);
+
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+
+		} finally {
+
+			closeConnection(preparedStatement, dbConnection);
+		}
 	}
 
 	private static void closeConnection(PreparedStatement p, Connection c) {
@@ -129,30 +154,5 @@ public class BookDAOImpl implements BookDAO {
 		}
 
 		return dbConnection;
-	}
-
-	@Override
-	public void deleteBook(int id) {
-		
-		Connection dbConnection = null;
-		PreparedStatement preparedStatement = null;
-
-		String query = "DELETE FROM BOOKS WHERE id=?";
-		
-		try {
-			dbConnection = getDBConnection();
-			preparedStatement = dbConnection.prepareStatement(query);
-
-			preparedStatement.setInt(1, id);
-			preparedStatement.executeUpdate();
-			
-		} catch (SQLException e) {
-
-			System.out.println(e.getMessage());
-
-		} finally {
-
-			closeConnection(preparedStatement, dbConnection);
-		}
 	}
 }

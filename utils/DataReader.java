@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import data.Book;
 
@@ -15,22 +16,32 @@ public class DataReader {
 		sc.close();
 	}
 
-	public int getInt() {
-		int number = sc.nextInt();
-		sc.nextLine();
+	public int getInt() throws NumberFormatException {
+		int number = 0;
+		try {
+			number = sc.nextInt();
+		} catch (InputMismatchException e) {
+			throw new NumberFormatException();
+		} finally {
+			sc.nextLine();
+		}
 		return number;
 	}
 
-	public Book createBook() {
-		System.out.println("Title: ");
-		String title = sc.nextLine();
-		System.out.println("Author: ");
-		String author = sc.nextLine();
-		System.out.println("Cost: ");
-		int cost = sc.nextInt();
-		sc.nextLine();
+	public Book createBook() throws InputMismatchException {
+		try {
+			System.out.println("Title: ");
+			String title = sc.nextLine();
+			System.out.println("Author: ");
+			String author = sc.nextLine();
+			System.out.println("Cost: ");
+			int cost = sc.nextInt();
+			sc.nextLine();
+			return new Book(title, author, cost);
+		} catch (InputMismatchException e) {
+			throw e;
+		}
 
-		return new Book(title, author, cost);
 	}
 
 }
