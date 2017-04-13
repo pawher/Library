@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import data.Book;
+import utils.DataReader;
 
 public class BookDAOImpl implements BookDAO {
 
@@ -64,13 +65,15 @@ public class BookDAOImpl implements BookDAO {
 
 		String query = "INSERT INTO BOOKS" + "(title, author, price) values" + "(?, ?, ?)";
 
+		Book newBook = new DataReader().createBook();
+		
 		try {
 			dbConnection = getDBConnection();
 			preparedStatement = dbConnection.prepareStatement(query);
 
-			preparedStatement.setString(1, "X");
-			preparedStatement.setString(2, "Y");
-			preparedStatement.setInt(3, 400);
+			preparedStatement.setString(1, newBook.getTitle());
+			preparedStatement.setString(2, newBook.getAuthor());
+			preparedStatement.setInt(3, newBook.getCost());
 
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
