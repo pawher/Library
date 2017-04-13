@@ -1,7 +1,7 @@
 package app;
 
 public enum Option {
-	EXIT(0, "EXIT PROGRAM"), ADD_BOOK(1, "ADD A BOOK"), PRINT_ALL_BOOKS(2, "PRINT ALL BOOKS");
+	EXIT(0, "EXIT PROGRAM"), ADD_BOOK(1, "ADD BOOK"), PRINT_ALL_BOOKS(2, "PRINT ALL BOOKS"), DELETE_BOOK(3, "DELETE BOOK");
 
 	private int value;
 	private String description;

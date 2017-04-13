@@ -6,7 +6,8 @@ import data.Book;
 
 public interface BookDAO {
 
-	List<Book> getAllBooks();
-	void insertBook();
+	public List<Book> getAllBooks();
+	public void insertBook();
+	public void deleteBook(int id);
 }
 

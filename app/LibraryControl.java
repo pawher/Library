@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Scanner;
+
 import dao.BookDAO;
 import dao.BookDAOImpl;
 import utils.DataReader;
@@ -30,6 +32,11 @@ public class LibraryControl {
 		case PRINT_ALL_BOOKS:
 			bookDAO.getAllBooks();
 			break;
+		case DELETE_BOOK:
+			System.out.println("Insert book id to be deleted");
+			Scanner sc = new Scanner(System.in);
+			int bookID = sc.nextInt();
+			bookDAO.deleteBook(bookID);
 		default:
 			break;
 		}
@@ -37,7 +44,7 @@ public class LibraryControl {
 
 	private void printOptions() {
 		for (Option option : Option.values()) {
-			System.err.println(option);
+			System.out.println(option);
 		}
 	}
 }

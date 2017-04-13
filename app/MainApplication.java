@@ -1,5 +1,7 @@
 package app;
 
+import dao.BookDAOImpl;
+
 public class MainApplication {
 
 	public static void main(String[] args) {
@@ -11,6 +13,4 @@ public class MainApplication {
 		myLibrary.controlLoop();
 
 	}
-	
-
 }
